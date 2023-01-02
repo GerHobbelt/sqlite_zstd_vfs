@@ -2,7 +2,13 @@
  * SQLite loadable extension providing the plain nested VFS (for testing with no page transcoding)
  */
 #include <sqlite3ext.h>
+
+#if !defined(BUILD_MONOLITHIC)
 SQLITE_EXTENSION_INIT1
+#else
+SQLITE_EXTENSION_INIT3
+#endif
+
 #include "SQLiteNestedVFS.h"
 #include "web_vfs.h"
 

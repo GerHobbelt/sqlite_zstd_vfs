@@ -2,7 +2,13 @@
 ** SQLite loadable extension providing zstd VFS
 */
 #include <sqlite3ext.h>
+
+#if !defined(BUILD_MONOLITHIC)
 SQLITE_EXTENSION_INIT1
+#else
+SQLITE_EXTENSION_INIT3
+#endif
+
 #include "web_vfs.h"
 #include "zstd_vfs.h"
 
